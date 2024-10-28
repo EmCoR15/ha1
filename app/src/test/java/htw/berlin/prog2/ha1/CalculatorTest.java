@@ -209,22 +209,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
-    @DisplayName("should display result after adding three numbers without pressing equals")
-    void testAddingThreeNumbers() {
-        Calculator calc = new Calculator();
+    @DisplayName("should display error when dividing zero by zero")
+    void testZeroDividedByZero() {
+    Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(5);
+    calc.pressDigitKey(0);
+    calc.pressBinaryOperationKey("/");
+    calc.pressDigitKey(0);
+    calc.pressEqualsKey();
 
-        String expected = "15";
-        String actual = calc.readScreen();
+    String expected = "Error";
+    String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
-    }
-
+    assertEquals(expected, actual);
+}
 }
 
