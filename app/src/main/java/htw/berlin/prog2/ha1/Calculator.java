@@ -145,6 +145,7 @@ public class Calculator {
      * Berechnet das Zwischenergebnis der aktuellen Operation und aktualisiert den Bildschirminhalt.
      * Wird aufgerufen, wenn eine binäre Operationstaste gedrückt wird oder die "="-Taste.
      * Bei Division durch Null wird "Error" angezeigt.
+     *
      */
     private void calculateIntermediateResult() {
         double currentValue = Double.parseDouble(screen);
@@ -162,6 +163,12 @@ public class Calculator {
         isNewInput = true;
     }
 
+    /**
+     * Formatiert das Ergebnis als String, sodass es auf dem Bildschirm angezeigt werden kann.
+     * Entfernt ".0" am Ende von ganzen Zahlen.
+     * @param result das Ergebnis als double
+     * @return
+     */
     private String formatResult(double result) {
         if (Double.isInfinite(result)) return "Error";
         String resultStr = Double.toString(result);
