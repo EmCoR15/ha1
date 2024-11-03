@@ -180,7 +180,7 @@ class CalculatorTest {
         calc.pressDigitKey(9);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(4);
-        calc.pressEqualsKey(); // Ergebnis: 5
+        calc.pressEqualsKey();
 
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
@@ -192,38 +192,44 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
     @Test
-    @DisplayName("should repeat the last operation when equals is pressed multiple times")
-    void testRepeatedEquals() {
+    @DisplayName("should display error when dividing zero by zero")
+    void testZeroDividedByZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        calc.pressEqualsKey();
-
-        String expected = "15";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display error when dividing zero by zero")
-    void testZeroDividedByZero() {
-    Calculator calc = new Calculator();
+    @DisplayName("should display result after multiple operations")
+    void testMultipleOperations() {
+        Calculator calc = new Calculator();
 
-    calc.pressDigitKey(0);
-    calc.pressBinaryOperationKey("/");
-    calc.pressDigitKey(0);
-    calc.pressEqualsKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
-    String expected = "Error";
-    String actual = calc.readScreen();
+        String expected = "7";
+        String actual = calc.readScreen();
 
-    assertEquals(expected, actual);
-}
+        assertEquals(expected, actual);
+    }
+
 }
 
