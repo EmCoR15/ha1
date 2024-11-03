@@ -192,7 +192,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
+    //Gab "NaN" statt "Error" aus
     @Test
     @DisplayName("should display error when dividing zero by zero")
     void testZeroDividedByZero() {
@@ -209,6 +209,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //multple operations was not possible
     @Test
     @DisplayName("should display result after multiple operations")
     void testMultipleOperations() {
